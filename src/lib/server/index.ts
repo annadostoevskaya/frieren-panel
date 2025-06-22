@@ -5,25 +5,25 @@ import { usersTable } from './schema';
 
 // You can specify any property from the node-postgres connection options
 const db = drizzle({
-	connection: {
-		connectionString: process.env.DATABASE_URL!,
-		ssl: false
-	}
+  connection: {
+    connectionString: process.env.DATABASE_URL!,
+    ssl: false
+  }
 });
 
 async function main() {
-	const user: typeof usersTable.$inferInsert = {
-		name: 'John',
-		age: 30,
-		email: 'john@example.com'
-	};
+  const user: typeof usersTable.$inferInsert = {
+    name: 'John',
+    age: 30,
+    email: 'john@example.com'
+  };
 
-	await db.insert(usersTable).values(user);
-	console.log('New user created!');
+  await db.insert(usersTable).values(user);
+  console.log('New user created!');
 
-	const users = await db.select().from(usersTable);
-	console.log('Getting all users from the database: ', users);
-	/*
+  const users = await db.select().from(usersTable);
+  console.log('Getting all users from the database: ', users);
+  /*
   const users: {
     id: number;
     name: string;
@@ -32,16 +32,16 @@ async function main() {
   }[]
   */
 
-	await db
-		.update(usersTable)
-		.set({
-			age: 31
-		})
-		.where(eq(usersTable.email, user.email));
-	console.log('User info updated!');
+  await db
+    .update(usersTable)
+    .set({
+      age: 31
+    })
+    .where(eq(usersTable.email, user.email));
+  console.log('User info updated!');
 
-	await db.delete(usersTable).where(eq(usersTable.email, user.email));
-	console.log('User deleted!');
+  await db.delete(usersTable).where(eq(usersTable.email, user.email));
+  console.log('User deleted!');
 }
 
 main();
