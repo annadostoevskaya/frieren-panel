@@ -39,7 +39,8 @@
       </Navigation.Tile>
     {/snippet}
   </Navigation.Rail>
-  <div class="flex items-center justify-center">
+
+  <div class="flex">
     {@render children()}
   </div>
 </div>
