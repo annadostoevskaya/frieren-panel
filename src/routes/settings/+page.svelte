@@ -16,9 +16,9 @@
   let selectedLanguage = $state(['en']);
 </script>
 
-<div class="flex flex-col p-4">
-  <form method="POST" class="flex flex-1 flex-col" use:enhance>
-    <div class="flex-1">
+<form method="POST" class="flex flex-1 flex-col" use:enhance>
+  <div class="grid auto-cols-max">
+    <div>
       <Combobox
         data={comboboxLanguage}
         value={selectedLanguage}
@@ -33,11 +33,44 @@
           </div>
         {/snippet}
       </Combobox>
-
       <input type="hidden" name="language" value={selectedLanguage} />
     </div>
-    <div class="mt-8 flex justify-end">
+    <div>
+      <Combobox
+        data={comboboxLanguage}
+        value={selectedLanguage}
+        defaultValue={selectedLanguage}
+        onValueChange={(e) => (selectedLanguage = e.value)}
+        label="Select Language"
+        placeholder="Language..."
+      >
+        {#snippet item(item)}
+          <div class="flex w-full justify-between space-x-2">
+            <span>{item.label}</span>
+          </div>
+        {/snippet}
+      </Combobox>
+      <input type="hidden" name="language" value={selectedLanguage} />
+    </div>
+    <div>
+      <Combobox
+        data={comboboxLanguage}
+        value={selectedLanguage}
+        defaultValue={selectedLanguage}
+        onValueChange={(e) => (selectedLanguage = e.value)}
+        label="Select Language"
+        placeholder="Language..."
+      >
+        {#snippet item(item)}
+          <div class="flex w-full justify-between space-x-2">
+            <span>{item.label}</span>
+          </div>
+        {/snippet}
+      </Combobox>
+      <input type="hidden" name="language" value={selectedLanguage} />
+    </div>
+    <div>
       <button type="submit" class="btn preset-filled">Apply</button>
     </div>
-  </form>
-</div>
+  </div>
+</form>

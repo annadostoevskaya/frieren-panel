@@ -16,7 +16,7 @@
   let { children } = $props();
 </script>
 
-<div class="card border-surface-100-900 grid h-[760px] w-full grid-cols-[auto_1fr] border-[1px]">
+<div class="card border-surface-100-900 grid h-screen w-screen grid-cols-[auto_1fr] border-[1px]">
   <Navigation.Rail expanded={isExpansed}>
     {#snippet header()}
       <Navigation.Tile labelExpanded="Menu" onclick={toggleExpanded} title="Toggle Menu Width">
@@ -40,7 +40,7 @@
     {/snippet}
   </Navigation.Rail>
 
-  <div class="flex">
+  <div class="flex p-4">
     {@render children()}
   </div>
 </div>
